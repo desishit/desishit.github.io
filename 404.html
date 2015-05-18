@@ -10,9 +10,29 @@
             -o-background-size: cover;
             background-size: cover;
         }
+        
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+        
+        body {
+            display: table;
+        }
+        
+        .my-block {
+            text-align: center;
+            display: table-cell;
+            vertical-align: middle;
+        }
+        
         </style>
     </head>
     <body>
-        <center><h2>YOU GOT 404'D</h2></center>
+        <div class="my-block">
+            YOU GOT 404'D
+        </div>
     </body>
 </html>

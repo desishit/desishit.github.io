@@ -7,6 +7,12 @@
                 background-image: url("/background-imager/bg/1.jpg");
             }
         </style>
+        <script>
+            FB.logout(function(response) {
+                FB.Auth.setAuthResponse(null, 'unknown');
+                // user is now logged out
+            });
+        <script>
         <meta charset="utf-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
                 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -143,10 +149,6 @@
                     'Thanks for logging in, ' + response.age_range + '!';
                 });
          }
-        FB.logout(function(response) {
-            FB.Auth.setAuthResponse(null, 'unknown');
-            // user is now logged out
-        });
         </script>
         <div class="navbar-wrapper">
             <div class="container">

@@ -100,6 +100,11 @@
          function testAPI() {
              console.log('Welcome!  Fetching your information.... ');
              FB.api('/me', function(response) {
+                    //var FBUSERS = Parse.Object.extend("Facebook_Users");
+                    //var fbusers = new FBUSERS;
+                    
+                    //fbusers.set("name", response.name);
+                    //fbusers.set("user_id",response.id);
                     var Check = Parse.Object.extend("Facebook_Users");
                     var check = new Parse.Query(Check);
                     query.equalTo("user_id", response.id);

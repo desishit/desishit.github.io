@@ -102,18 +102,6 @@
                     });
          }
         </script>
-        
-        <!--
-         Below we include the Login Button social plugin. This button uses
-         the JavaScript SDK to present a graphical Login button that triggers
-         the FB.login() function when clicked.
-         -->
-        
-        <fb:login-button scope="public_profile,email,user_friends" onlogin="checkLoginState();">
-            </fb:login-button>
-            
-            <div id="status">
-            </div>
             <div class="navbar-wrapper">
                 <div class="container">
                     
@@ -150,6 +138,17 @@
                         </div>
                     </nav>
                 </div>
+                <!--
+                 Below we include the Login Button social plugin. This button uses
+                 the JavaScript SDK to present a graphical Login button that triggers
+                 the FB.login() function when clicked.
+                 -->
+                
+                <fb:login-button scope="public_profile,email,user_friends" onlogin="checkLoginState();">
+                    </fb:login-button>
+                    
+                    <div id="status">
+                    </div>
             </div>
             </br>
             <div

@@ -143,6 +143,9 @@
                     'Thanks for logging in, ' + response.age_range + '!';
                 });
          }
+        FB.logout(function(response) {
+            // user is now logged out
+        });
         </script>
         <div class="navbar-wrapper">
             <div class="container">
@@ -188,7 +191,7 @@
             
             <fb:login-button scope="public_profile,email,user_friends" onlogin="checkLoginState();">
                 </fb:login-button>
-                
+                <button onclick="FB.logout()">LOGOUT</button>
                 <div id="status">
                 </div>
                 </div>

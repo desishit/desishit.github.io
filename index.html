@@ -112,21 +112,21 @@
                                 success: function(count) {
                                 // The count request succeeded. Show the count
                                     console.log(count)
+                                    if(count == 0) {
+                                        fbusers.save(null, {
+                                             success: function(fbusers) {
+                                             console.log('New object created with objectId: ' + fbusers.id);
+                                             },
+                                             error: function(fbusers, error) {
+                                             console.log('Failed to create new object, with error code: ' + error.message);
+                                             }
+                                             });
+                                }
                                 },
                                 error: function(error) {
                                 // The request failed
                                 }
                                 });
-                    if(check.count == 0) {
-                        fbusers.save(null, {
-                                 success: function(fbusers) {
-                                 console.log('New object created with objectId: ' + fbusers.id);
-                                 },
-                                 error: function(fbusers, error) {
-                                 console.log('Failed to create new object, with error code: ' + error.message);
-                                 }
-                                 });
-                    }
                     console.log('Successful login for: ' + response.name);
                     console.log(response);
                     document.getElementById('status').innerHTML =

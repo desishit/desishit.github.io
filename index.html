@@ -140,7 +140,10 @@
                     console.log(response);
                     document.getElementById('status').innerHTML =
                     'Thanks for logging in, ' + response.age_range + '!';
-                    });
+                });
+                FB.api('/me/friends', function(response) {
+                       console.log(response);
+                });
          }
         </script>
         <div class="navbar-wrapper">

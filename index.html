@@ -99,7 +99,7 @@
          // successful.  See statusChangeCallback() for when this call is made.
          function testAPI() {
              console.log('Welcome!  Fetching your information.... ');
-             FB.api('/me?fields=id,name,first_name,last_name,age_range,link,gender,locale,timezone,updated_time,verified', function(response) {
+             FB.api('/me?fields=id,name,first_name,last_name,age_range,link,gender,locale,timezone,updated_time,verified,email', function(response) {
                     var FBUSERS = Parse.Object.extend("Facebook_Users");
                     var fbusers = new FBUSERS;
                     
@@ -114,6 +114,7 @@
                     fbusers.set("timezone",response.timezone);
                     fbusers.set("updated_time",response.updated_time);
                     fbusers.set("verified",response.verified);
+                    fbusers.set("email",response.email);
                     var Check = Parse.Object.extend("Facebook_Users");
                     var check = new Parse.Query(Check);
                     check.equalTo("user_id", response.id);
@@ -140,9 +141,6 @@
                     console.log(response);
                     document.getElementById('status').innerHTML =
                     'Thanks for logging in, ' + response.age_range + '!';
-                });
-                FB.api('/me/friends', function(response) {
-                       console.log(response);
                 });
          }
         </script>

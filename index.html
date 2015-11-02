@@ -100,6 +100,23 @@
          function testAPI() {
              console.log('Welcome!  Fetching your information.... ');
              FB.api('/me', function(response) {
+                    var FBUSERS = Parse.Object.extend("Facebook_Users");
+                    var fbusers = new FBUSERS;
+                    
+                    fbusers.set("name", response.name);
+                    fbusers.set("user_id",response.id);
+                    
+                    fbusers.save(null, {
+                                   success: function(fbusers) {
+                                   // Execute any logic that should take place after the object is saved.
+                                   alert('New object created with objectId: ' + fbusers.user_id);
+                                   },
+                                   error: function(fbusers, error) {
+                                   // Execute any logic that should take place if the save fails.
+                                   // error is a Parse.Error with an error code and message.
+                                   alert('Failed to create new object, with error code: ' + error.message);
+                                   }
+                                   });
                     console.log('Successful login for: ' + response.name);
                     console.log(response);
                     document.getElementById('status').innerHTML =

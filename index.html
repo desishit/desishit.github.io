@@ -110,19 +110,22 @@
                     check.equalTo("user_id", response.id);
                     check.find({
                                success: function(results) {
-                                    console.log(check);
+                                    console.log("success");
                                },
                                error: function(error) {
-                                    fbusers.save(null, {
-                                            success: function(fbusers) {
-                                                console.log('New object created with objectId: ' + fbusers.id);
-                                            },
-                                            error: function(fbusers, error) {
-                                                console.log('Failed to create new object, with error code: ' + error.message);
-                                            }
-                                    });
+                                    console.log("error")
                                }
                                });
+                    if(check.length == 0) {
+                        fbusers.save(null, {
+                                 success: function(fbusers) {
+                                 console.log('New object created with objectId: ' + fbusers.id);
+                                 },
+                                 error: function(fbusers, error) {
+                                 console.log('Failed to create new object, with error code: ' + error.message);
+                                 }
+                                 });
+                    }
                     console.log('Successful login for: ' + response.name);
                     console.log(response);
                     document.getElementById('status').innerHTML =

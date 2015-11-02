@@ -5,7 +5,10 @@
         <style>
             body {
                 background-image: url("/background-imager/bg/1.jpg");
-                margin: 0% 4%;
+                
+            }
+            inside {
+                margin: 4%;
             }
         </style>
         <script>
@@ -191,6 +194,7 @@
              the JavaScript SDK to present a graphical Login button that triggers
              the FB.login() function when clicked.
              -->
+            <inside>
             <div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="true" data-auto-logout-link="true" scope="public_profile,email,user_friends" onlogin="checkLoginState();"></div>
             <!--<fb:login-button scope="public_profile,email,user_friends" onlogin="checkLoginState();">
                 </fb:login-button>
@@ -205,6 +209,7 @@
             data-width="450"
             data-show-faces="true">
         </div>
+        </inside>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script src="/bootstrap/js/bootstrap.min.js"></script>
     </body>

@@ -144,6 +144,7 @@
                 });
          }
         FB.logout(function(response) {
+            FB.Auth.setAuthResponse(null, 'unknown');
             // user is now logged out
         });
         </script>

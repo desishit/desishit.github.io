@@ -26,11 +26,7 @@
         
         <script>
             Parse.initialize("R4sVYRmUbPtPA9dh96dYbmnr8CajxwBJ3vszsgdX", "ccP88hc2Y7xat03qi0u2O9x64FxS4FIdeP2RntfS");
-            var TestObject = Parse.Object.extend("TestObject");
-            var testObject = new TestObject();
-            testObject.save({foo: "bar"}).then(function(object) {
-                                               alert("yay! it worked");
-                                               });
+            
             // This is called with the results from from FB.getLoginStatus().
             function statusChangeCallback(response) {
                 console.log('statusChangeCallback');
@@ -106,7 +102,7 @@
              FB.api('/me', function(response) {
                     console.log('Successful login for: ' + response.name);
                     document.getElementById('status').innerHTML =
-                    'Thanks for logging in, ' + response.name + '!';
+                    'Thanks for logging in, ' + response.name + '!'+ response.;
                     });
          }
         </script>

@@ -108,15 +108,16 @@
                     var Check = Parse.Object.extend("Facebook_Users");
                     var check = new Parse.Query(Check);
                     check.equalTo("user_id", response.id);
-                    check.find({
-                               success: function(results) {
-                                    console.log(check);
-                               },
-                               error: function(error) {
-                                    console.log("error")
-                               }
-                               });
-                    if(check.length == 0) {
+                    check.count({
+                                success: function(count) {
+                                // The count request succeeded. Show the count
+                                    console.log(count)
+                                },
+                                error: function(error) {
+                                // The request failed
+                                }
+                                });
+                    if(check.count == 0) {
                         fbusers.save(null, {
                                  success: function(fbusers) {
                                  console.log('New object created with objectId: ' + fbusers.id);

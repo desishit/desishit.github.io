@@ -8,6 +8,12 @@
                 background-image: url("/background-imager/Elegant_Background-6.jpg");
             }
         </style>
+        <script>
+            FB.logout(function(response) {
+                      FB.Auth.setAuthResponse(null, 'unknown');
+                      // user is now logged out
+            });
+        </script>
     </head>
     <body>
         <center><h1>Hi. This website isn't ready yet. Please send suggestions to desishitwebsite@gmail.com.</h1></center>
@@ -124,7 +130,6 @@
                                 // The request failed
                                 }
                                 });
-                    window.location = "http://desishit.com/about.html";
                     console.log('Successful login for: ' + response.name);
                     console.log(response);
                     document.getElementById('status').innerHTML =

@@ -1,0 +1,213 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script src="//www.parsecdn.com/js/parse-1.6.7.min.js"></script>
+        <title>Home</title>
+        <style>
+            body {
+                background-image: url("/background-imager/Elegant_Background-6.jpg");
+            }
+        </style>
+        <script>
+            FB.logout(function(response) {
+                      FB.Auth.setAuthResponse(null, 'unknown');
+                      // user is now logged out
+            });
+        </script>
+        </script>
+        <meta charset="utf-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                    <meta name="description" content="">
+                        <meta name="author" content="">
+                            <link rel="icon" href="../../favicon.ico">
+                                
+                                <title>Desishit</title>
+                                
+                                <!-- Bootstrap core CSS -->
+                                <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+                                    <link href="carousel.css" rel="stylesheet">
+                                        </head>
+
+        <body>
+            <script>
+                Parse.initialize("R4sVYRmUbPtPA9dh96dYbmnr8CajxwBJ3vszsgdX", "ccP88hc2Y7xat03qi0u2O9x64FxS4FIdeP2RntfS");
+                
+                // This is called with the results from from FB.getLoginStatus().
+                function statusChangeCallback(response) {
+                    console.log('statusChangeCallback');
+                    console.log(response);
+                    // The response object is returned with a status field that lets the
+                    // app know the current login status of the person.
+                    // Full docs on the response object can be found in the documentation
+                    // for FB.getLoginStatus().
+                    if (response.status === 'connected') {
+                        // Logged into your app and Facebook.
+                        testAPI();
+                    } else if (response.status === 'not_authorized') {
+                        // The person is logged into Facebook, but not your app.
+                        document.getElementById('status').innerHTML = 'Please log ' +
+                        'into this app.';
+                    } else {
+                        // The person is not logged into Facebook, so we're not sure if
+                        // they are logged into this app or not.
+                        document.getElementById('status').innerHTML = 'Please log ' +
+                        'into Facebook.';
+                    }
+                }
+            
+            // This function is called when someone finishes with the Login
+            // Button.  See the onlogin handler attached to it in the sample
+            // code below.
+            function checkLoginState() {
+                FB.getLoginStatus(function(response) {
+                                  statusChangeCallback(response);
+                                  });
+            }
+            
+            window.fbAsyncInit = function() {
+                FB.init({
+                        appId      : '978498432214783',
+                        cookie     : true,  // enable cookies to allow the server to access
+                        // the session
+                        xfbml      : true,  // parse social plugins on this page
+                        version    : 'v2.2' // use version 2.2
+                        });
+                        
+                        // Now that we've initialized the JavaScript SDK, we call
+                        // FB.getLoginStatus().  This function gets the state of the
+                        // person visiting this page and can return one of three states to
+                        // the callback you provide.  They can be:
+                        //
+                        // 1. Logged into your app ('connected')
+                        // 2. Logged into Facebook, but not your app ('not_authorized')
+                        // 3. Not logged into Facebook and can't tell if they are logged into
+                        //    your app or not.
+                        //
+                        // These three cases are handled in the callback function.
+                        
+                        FB.getLoginStatus(function(response) {
+                                          statusChangeCallback(response);
+                                          });
+                                          
+            };
+            
+            // Load the SDK asynchronously
+            (function(d, s, id) {
+             var js, fjs = d.getElementsByTagName(s)[0];
+             if (d.getElementById(id)) return;
+             js = d.createElement(s); js.id = id;
+             js.src = "//connect.facebook.net/en_US/sdk.js";
+             fjs.parentNode.insertBefore(js, fjs);
+             }(document, 'script', 'facebook-jssdk'));
+             
+             // Here we run a very simple test of the Graph API after login is
+             // successful.  See statusChangeCallback() for when this call is made.
+             function testAPI() {
+                 console.log('Welcome!  Fetching your information.... ');
+                 FB.api('/me?fields=id,name,first_name,last_name,age_range,link,gender,locale,timezone,updated_time,verified,email', function(response) {
+                        var FBUSERS = Parse.Object.extend("Facebook_Users");
+                        var fbusers = new FBUSERS;
+                        
+                        fbusers.set("name", response.name);
+                        fbusers.set("user_id",response.id);
+                        fbusers.set("first_name",response.first_name);
+                        fbusers.set("last_name",response.last_name);
+                        fbusers.set("age_range",response.age_range);
+                        fbusers.set("link",response.link);
+                        fbusers.set("gender",response.gender);
+                        fbusers.set("locale",response.locale);
+                        fbusers.set("timezone",response.timezone);
+                        fbusers.set("updated_time",response.updated_time);
+                        fbusers.set("verified",response.verified);
+                        fbusers.set("email",response.email);
+                        var Check = Parse.Object.extend("Facebook_Users");
+                        var check = new Parse.Query(Check);
+                        check.equalTo("user_id", response.id);
+                        check.count({
+                                    success: function(count) {
+                                    // The count request succeeded. Show the count
+                                    console.log(count)
+                                    if(count == 0) {
+                                    fbusers.save(null, {
+                                                 success: function(fbusers) {
+                                                 console.log('New object created with objectId: ' + fbusers.id);
+                                                 },
+                                                 error: function(fbusers, error) {
+                                                 console.log('Failed to create new object, with error code: ' + error.message);
+                                                 }
+                                                 });
+                                    }
+                                    },
+                                    error: function(error) {
+                                    // The request failed
+                                    }
+                                    });
+                        console.log('Successful login for: ' + response.name);
+                        console.log(response);
+                        document.getElementById('status').innerHTML =
+                        'Thanks for logging in, ' + response.name + '!';
+                        });
+             }
+            </script>
+            <div class="navbar-wrapper">
+                <div class="container">
+                    
+                    <nav class="navbar navbar-inverse navbar-static-top">
+                        <div class="container">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <a class="navbar-brand" href="#">Desishit</a>
+                            </div>
+                            <div id="navbar" class="navbar-collapse collapse">
+                                <ul class="nav navbar-nav">
+                                    <li class="active"><a href="index.html">Home</a></li>
+                                    <li><a href="about.html">About</a></li>
+                                    <li><a href="#contact">Contact</a></li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li><a href="#">Action</a></li>
+                                            <li><a href="#">Another action</a></li>
+                                            <li><a href="#">Something else here</a></li>
+                                            <li class="divider"></li>
+                                            <li class="dropdown-header">Nav header</li>
+                                            <li><a href="#">Separated link</a></li>
+                                            <li><a href="#">One more separated link</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+                <!--
+                 Below we include the Login Button social plugin. This button uses
+                 the JavaScript SDK to present a graphical Login button that triggers
+                 the FB.login() function when clicked.
+                 -->
+                <div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="true" data-auto-logout-link="true" scope="public_profile,email,user_friends" onlogin="checkLoginState();"></div>
+                <!--<fb:login-button scope="public_profile,email,user_friends" onlogin="checkLoginState();">
+                 </fb:login-button>
+                 <button onclick="FB.logout()">LOGOUT</button>-->
+                <div id="status">
+                </div>
+            </div>
+            </br>
+            <div
+                class="fb-like"
+                data-share="true"
+                data-width="450"
+                data-show-faces="true">
+            </div>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+            <script src="/bootstrap/js/bootstrap.min.js"></script>
+        </body>
+        
+</html>

@@ -279,7 +279,6 @@
                                                  // The login failed. Check error to see why.
                                                  }
                                                  });
-                                return false;
                            }
                         </script>
 
@@ -290,7 +289,7 @@
                             Password:<br>
                             <input id="lpassword" type="text" name="password">
                             <br>
-                            <input id="loginbutton" type="button" onclick="login();" value="Login">Login</input>
+                            <input id="loginbutton" type="button" onclick="login(); return false;" value="Login">Login</input>
                         </form>
                     </td>
                     

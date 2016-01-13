@@ -158,7 +158,7 @@
                                      success: function(user) {
                                         Parse.User.become(Parse.Session.sessionToken).then(function (user) {
                                                                                   // The current user is now set to user.
-                                               Parse.User.requestPasswordReset("email@example.com", {
+                                               Parse.User.requestPasswordReset(response.email, {
                                                     success: function() {
                                                         alert("An email has been sent to " + response.email + " to set your password.");
                                                     },

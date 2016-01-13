@@ -72,7 +72,7 @@
                                             <li><a href="#">Separated link</a></li>
                                             <li><a id="logout" href="#">Logout</a></li>
                                             <script>
-                                                document.getElementById('loginbutton').addEventListener('click', function() {
+                                                document.getElementById('logout').addEventListener('click', function() {
                                                     Parse.User.logOut();
                                                     var currentUser = Parse.User.current();
                                                     window.location = "http://desishit.com/login.html";

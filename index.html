@@ -70,7 +70,14 @@
                                             <li class="divider"></li>
                                             <li class="dropdown-header">Nav header</li>
                                             <li><a href="#">Separated link</a></li>
-                                            <li><a href="#">One more separated link</a></li>
+                                            <li><a id="logout" href="#">Logout</a></li>
+                                            <script>
+                                                document.getElementById('loginbutton').addEventListener('click', function() {
+                                                    Parse.User.logOut();
+                                                    var currentUser = Parse.User.current();
+                                                    window.location = "http://desishit.com/login.html";
+                                                });
+                                            </script>
                                         </ul>
                                     </li>
                                 </ul>

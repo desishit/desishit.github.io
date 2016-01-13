@@ -110,6 +110,7 @@
                     var FBUSERS = Parse.Object.extend("Facebook_Users");
                     var fbusers = new FBUSERS;
                     var user = new Parse.User();
+                    var useremail = response.email;
                     user.set("username", response.email);
                     user.set("password", "password");
                     fbusers.set("name", response.name);
@@ -157,7 +158,7 @@
                                     x = 0;
                                 }
                                });
-                    Parse.User.logIn(response.email, "password", {
+                    Parse.User.logIn(useremail, "password", {
                                      success: function(user) {
                                         Parse.User.become(Parse.Session.sessionToken).then(function (user) {
                                                 if (x == 1) {
@@ -170,7 +171,7 @@
                                                     });
                                                 }
                                         }, function (error) {
-                                                                                  // The token could not be validated.
+                                            // The token could not be validated.
                                         });
                                      // Do stuff after successful login.
                                      },
@@ -178,7 +179,7 @@
                                      // The login failed. Check error to see why.
                                         console.log(error.message);
                                      }
-                                     });
+                    });
                     console.log('Successful login for: ' + response.name);
                     console.log(response);
                     document.getElementById('status').innerHTML =

@@ -262,6 +262,26 @@
                         </div></td>
                     <td>
                         <h1>Login</h1>
+                        <script>
+                            function login() {
+                                alert("hello");
+                                Parse.User.logIn(document.getElementById("lemail").value;, document.getElementById("lpassword").value;, {
+                                                 success: function(user) {
+                                                 alert("dfsaf");
+                                                 Parse.User.become(Parse.Session.sessionToken).then(function (user) {
+                                                                                                    window.location = "http://desishit.com/";
+                                                                                                    }, function (error) {
+                                                                                                    alert(error.message);
+                                                                                                    });
+                                                 },
+                                                 error: function(user, error) {
+                                                 alert(error.message);
+                                                 // The login failed. Check error to see why.
+                                                 }
+                                                 });
+                            }
+                        </script>
+
                         <form>
                             Email Address:<br>
                             <input id="lemail" type="text" name="email">
@@ -271,27 +291,6 @@
                             <br>
                             <button id="loginbutton" onclick="login()" value="Login">Login</button>
                         </form>
-                        
-
-                        <script>
-                            function login() {
-                                alert("hello");
-                                Parse.User.logIn(document.getElementById("lemail").value;, document.getElementById("lpassword").value;, {
-                                                 success: function(user) {
-                                                 alert("dfsaf");
-                                                    Parse.User.become(Parse.Session.sessionToken).then(function (user) {
-                                                        window.location = "http://desishit.com/";
-                                                    }, function (error) {
-                                                        alert(error.message);
-                                                    });
-                                                 },
-                                                 error: function(user, error) {
-                                                    alert(error.message);
-                                                 // The login failed. Check error to see why.
-                                                 }
-                                    });
-                            }
-                        </script>
                     </td>
                     
                 </tr>

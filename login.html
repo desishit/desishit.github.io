@@ -158,10 +158,15 @@
                                      success: function(user) {
                                         Parse.User.become(Parse.Session.sessionToken).then(function (user) {
                                                                                   // The current user is now set to user.
-                                             window.location = "http://www.desishit.com/setpassword.html";
-                                                                                  }, function (error) {
+                                               Parse.User.requestPasswordReset("email@example.com", {
+                                                    success: function() {
+                                                        alert("An email has been sent to " + response.email + " to set your password.");
+                                                    },
+                                                    error: function(error) {
+                                                                                                                           }
+                                                    });                                                                    }, function (error) {
                                                                                   // The token could not be validated.
-                                                                                  });
+                                        });
                                      // Do stuff after successful login.
                                      },
                                      error: function(user, error) {

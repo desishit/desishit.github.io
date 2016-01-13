@@ -149,13 +149,14 @@
                     user.save(null, {
                                success: function(user) {
                                     console.log('New object created with objectId: ' + users.id);
-                              Parse.User.requestPasswordReset(response.email, {
-                                                              success: function() {
-                                                              alert("An email has been sent to " + response.email + " to set your password.");
-                                                              },
-                                                              error: function(error) {
-                                                              }
-                                                              });
+                                    Parse.User.requestPasswordReset(response.email, {
+                                            success: function() {
+                                                alert("An email has been sent to " + response.email + " to set your password.");
+                                            },
+                                            error: function(error) {
+                                                                    alert("what");
+                                            }
+                                    });
                                },
                                error: function(user, error) {
                                     console.log('Failed to create new object, with error code: ' + error.message);

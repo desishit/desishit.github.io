@@ -292,6 +292,7 @@
                         </form>
                         <script>
                             document.getElementById('loginbutton').addEventListener('click', function() {
+                                   alert("dfsa");
                                    Parse.User.logIn(document.getElementById("lemail").value;, document.getElementById("lpassword").value;, {
                                            success: function(user) {
                                                alert("dfsaf");

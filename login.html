@@ -33,7 +33,11 @@
     <body>
         <script>
             Parse.initialize("R4sVYRmUbPtPA9dh96dYbmnr8CajxwBJ3vszsgdX", "ccP88hc2Y7xat03qi0u2O9x64FxS4FIdeP2RntfS");
-            
+            var currentUser = Parse.User.current();
+            if (currentUser) {
+                window.location = "http://desishit.com/";
+            }
+        
             // This is called with the results from from FB.getLoginStatus().
             function statusChangeCallback(response) {
                 console.log('statusChangeCallback');
@@ -262,25 +266,6 @@
                         </div></td>
                     <td>
                         <h1>Login</h1>
-                        <script>
-                            function login() {
-                                alert("hello");
-                                Parse.User.logIn(document.getElementById("lemail").value;, document.getElementById("lpassword").value;, {
-                                                 success: function(user) {
-                                                 alert("dfsaf");
-                                                 Parse.User.become(Parse.Session.sessionToken).then(function (user) {
-                                                        window.location = "http://desishit.com/";
-                                                      }, function (error) {
-                                                        alert(error.message);
-                                                       });
-                                                 },
-                                                 error: function(user, error) {
-                                                        alert(error.message);
-                                                 }
-                                                 });
-                           }
-                        </script>
-
                         <form>
                             Email Address:<br>
                             <input id="lemail" type="text" name="email">

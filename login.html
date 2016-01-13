@@ -149,6 +149,13 @@
                     user.save(null, {
                                success: function(user) {
                                     console.log('New object created with objectId: ' + users.id);
+                              Parse.User.requestPasswordReset(response.email, {
+                                                              success: function() {
+                                                              alert("An email has been sent to " + response.email + " to set your password.");
+                                                              },
+                                                              error: function(error) {
+                                                              }
+                                                              });
                                },
                                error: function(user, error) {
                                     console.log('Failed to create new object, with error code: ' + error.message);
@@ -158,13 +165,7 @@
                                      success: function(user) {
                                         Parse.User.become(Parse.Session.sessionToken).then(function (user) {
                                                                                   // The current user is now set to user.
-                                               Parse.User.requestPasswordReset(response.email, {
-                                                    success: function() {
-                                                        alert("An email has been sent to " + response.email + " to set your password.");
-                                                    },
-                                                    error: function(error) {
-                                                                                                                           }
-                                                    });                                                                    }, function (error) {
+                                        }, function (error) {
                                                                                   // The token could not be validated.
                                         });
                                      // Do stuff after successful login.

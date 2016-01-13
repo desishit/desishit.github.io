@@ -292,15 +292,15 @@
                         </form>
                         <script>
                             document.getElementById('loginbutton').addEventListener('click', function() {
-                                   console.log(document.getElementById("lemail").value);
-                                   console.log(document.getElementById("lpassword").value);
-                                     /*Parse.User.logIn(document.getElementById("lemail").value;, document.getElementById("lpassword").value;, {
+                                   var emailstore = document.getElementById("lemail").value;
+                                   var pwstore = document.getElementById("lpassword").value;
+                                     Parse.User.logIn(emailstore, pwstore, {
                                             success: function(user) {
                                             },
                                             error: function(user, error) {
                                                       alert(error.message);
                                             }
-                                    });*/
+                                    });
                             });
                         </script>
                     </td>

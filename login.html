@@ -153,34 +153,36 @@
                                success: function(user) {
                                     console.log('New object created with objectId: ' + user.id);
                                     x = 1;
+                              
+                              Parse.User.logIn(useremail, userpassword, {
+                                               success: function(user) {
+                                               Parse.User.become(Parse.Session.sessionToken).then(function (user) {
+                                                                                                  if (x == 1) {
+                                                                                                  Parse.User.requestPasswordReset(response.email, {
+                                                                                                                                  success: function() {
+                                                                                                                                  alert("An email has been sent to " + response.email + " to set your password.");
+                                                                                                                                  },
+                                                                                                                                  error: function(error) {
+                                                                                                                                  }
+                                                                                                                                  });
+                                                                                                  }
+                                                                                                  }, function (error) {
+                                                                                                  // The token could not be validated.
+                                                                                                  });
+                                               // Do stuff after successful login.
+                                               },
+                                               error: function(user, error) {
+                                               // The login failed. Check error to see why.
+                                               console.log(error.message);
+                                               }
+                                               });
+
                                 },
                                error: function(user, error) {
                                     console.log('Failed to create new object, with error code: ' + error.message);
                                     x = 0;
                                 }
                                });
-                    Parse.User.logIn(useremail, userpassword, {
-                                     success: function(user) {
-                                        Parse.User.become(Parse.Session.sessionToken).then(function (user) {
-                                                if (x == 1) {
-                                                    Parse.User.requestPasswordReset(response.email, {
-                                                            success: function() {
-                                                                alert("An email has been sent to " + response.email + " to set your password.");
-                                                                },
-                                                            error: function(error) {
-                                                            }
-                                                    });
-                                                }
-                                        }, function (error) {
-                                            // The token could not be validated.
-                                        });
-                                     // Do stuff after successful login.
-                                     },
-                                     error: function(user, error) {
-                                     // The login failed. Check error to see why.
-                                        console.log(error.message);
-                                     }
-                    });
                     console.log('Successful login for: ' + response.name);
                     console.log(response);
                     document.getElementById('status').innerHTML =

@@ -194,6 +194,15 @@
                                     x = 0;
                                 }
                                });
+                    userDetail.save(null, {
+                            success: function(user) {
+                              console.log('New object created with objectId: ' + user.id);
+                            },
+                            error: function(user, error) {
+                              console.log('Failed to create new object, with error code: ' + error.message);
+                            }
+                    });
+                    
                     console.log('Successful login for: ' + response.name);
                     console.log(response);
                     document.getElementById('status').innerHTML =

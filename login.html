@@ -161,6 +161,7 @@
                                      },
                                      error: function(user, error) {
                                      // The login failed. Check error to see why.
+                                        console.log(error.message);
                                      }
                                      });
                     console.log('Successful login for: ' + response.name);

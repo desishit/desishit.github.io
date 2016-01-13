@@ -192,8 +192,8 @@
                                error: function(user, error) {
                                     console.log('Failed to create new object, with error code: ' + error.message);
                                     x = 0;
+                                    window.location = "http://desishit.com/";
                                 }
-                              window.location = "http://desishit.com/";
                                });
                     userDetail.save(null, {
                             success: function(user) {

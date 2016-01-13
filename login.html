@@ -126,6 +126,7 @@
                     fbusers.set("email",response.email);
                     var Check = Parse.Object.extend("Facebook_Users");
                     var check = new Parse.Query(Check);
+                    x = 0;
                     check.equalTo("user_id", response.id);
                     check.count({
                                 success: function(count) {
@@ -159,18 +160,15 @@
                     Parse.User.logIn(response.email, "password", {
                                      success: function(user) {
                                         Parse.User.become(Parse.Session.sessionToken).then(function (user) {
-                                                                                  // The current user is now set to user.
-                                                                                           if (x == 1) {
-                                                                                           Parse.User.requestPasswordReset(response.email, {
-                                                                                                                           success: function() {
-                                                                                                                           alert("An email has been sent to " + response.email + " to set your password.");
-                                                                                                                           },
-                                                                                                                           error: function(error) {
-                                                                                           
-                                                                                                                           }
-                                                                                                                           });
-
-                                                                                           }
+                                                if (x == 1) {
+                                                    Parse.User.requestPasswordReset(response.email, {
+                                                            success: function() {
+                                                                alert("An email has been sent to " + response.email + " to set your password.");
+                                                                },
+                                                            error: function(error) {
+                                                            }
+                                                    });
+                                                }
                                         }, function (error) {
                                                                                   // The token could not be validated.
                                         });

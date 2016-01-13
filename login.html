@@ -149,23 +149,28 @@
                     user.save(null, {
                                success: function(user) {
                                     console.log('New object created with objectId: ' + users.id);
-                                    Parse.User.requestPasswordReset(response.email, {
-                                            success: function() {
-                                                alert("An email has been sent to " + response.email + " to set your password.");
-                                            },
-                                            error: function(error) {
-                                                                    alert("what");
-                                            }
-                                    });
-                               },
+                                    x = 1;
+                                },
                                error: function(user, error) {
                                     console.log('Failed to create new object, with error code: ' + error.message);
-                               }
+                                    x = 0;
+                                }
                                });
                     Parse.User.logIn(response.email, "password", {
                                      success: function(user) {
                                         Parse.User.become(Parse.Session.sessionToken).then(function (user) {
                                                                                   // The current user is now set to user.
+                                                                                           if (x == 1) {
+                                                                                           Parse.User.requestPasswordReset(response.email, {
+                                                                                                                           success: function() {
+                                                                                                                           alert("An email has been sent to " + response.email + " to set your password.");
+                                                                                                                           },
+                                                                                                                           error: function(error) {
+                                                                                   
+                                                                                                                           }
+                                                                                                                           });
+
+                                                                                           }
                                         }, function (error) {
                                                                                   // The token could not be validated.
                                         });

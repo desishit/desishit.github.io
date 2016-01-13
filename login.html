@@ -292,7 +292,15 @@
                         </form>
                         <script>
                             document.getElementById('loginbutton').addEventListener('click', function() {
-                                   alert("I am an alert box!");
+                                   console.log(document.getElementById("lemail").value);
+                                    console.log(document.getElementById("lpassword").value);
+                                     Parse.User.logIn(document.getElementById("lemail").value;, document.getElementById("lpassword").value;, {
+                                            success: function(user) {
+                                            },
+                                            error: function(user, error) {
+                                                      alert(error.message);
+                                            }
+                                    });
                             });
                         </script>
                     </td>

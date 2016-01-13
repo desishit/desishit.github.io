@@ -163,23 +163,21 @@
                     user.save(null, {
                                success: function(user) {
                                     console.log('New object created with objectId: ' + user.id);
-                                    x = 1;
                               
                               Parse.User.logIn(useremail, userpassword, {
                                                success: function(user) {
                                                Parse.User.become(Parse.Session.sessionToken).then(function (user) {
-                                                                                                  if (x == 1) {
-                                                                                                  Parse.User.requestPasswordReset(response.email, {
-                                                                                                                                  success: function() {
-                                                                                                                                  alert("An email has been sent to " + response.email + " to set your password.");
-                                                                             window.location = "http://desishit.com/";                                                     },
-                                                                                                                                  error: function(error) {
-                                                                                                                                  }
-                                                                                                                                  });
-                                                                                                  }
-                                                                                                  }, function (error) {
+                                                    Parse.User.requestPasswordReset(response.email, {
+                                                        success: function() {
+                                                          alert("An email has been sent to " + response.email + " to set your password.");
+                                                          window.location = "http://desishit.com/";
+                                                        },
+                                                        error: function(error) {
+                                                        }
+                                                    });
+                                                 }, function (error) {
                                                                                                   // The token could not be validated.
-                                                                                                  });
+                                                });
                                                // Do stuff after successful login.
                                                },
                                                error: function(user, error) {
@@ -191,7 +189,6 @@
                                 },
                                error: function(user, error) {
                                     console.log('Failed to create new object, with error code: ' + error.message);
-                                    x = 0;
                                     Parse.User.become(Parse.Session.sessionToken).then(function (user) {
                                                 window.location = "http://desishit.com/";
                                     }, function (error) {
@@ -255,12 +252,18 @@
              the JavaScript SDK to present a graphical Login button that triggers
              the FB.login() function when clicked.
              -->
-            <div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="true" data-auto-logout-link="true" scope="public_profile,email,user_friends" onlogin="checkLoginState();"></div>
-            <!--<fb:login-button scope="public_profile,email,user_friends" onlogin="checkLoginState();">
-                </fb:login-button>
-                <button onclick="FB.logout()">LOGOUT</button>-->
-                <div id="status">
-                </div>
+            <table style="width:100%">
+                <tr>
+                    <td><div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="true" data-auto-logout-link="true" scope="public_profile,email,user_friends" onlogin="checkLoginState();"></div>
+                        <!--<fb:login-button scope="public_profile,email,user_friends" onlogin="checkLoginState();">
+                         </fb:login-button>
+                         <button onclick="FB.logout()">LOGOUT</button>-->
+                        <div id="status">
+                        </div></td>
+                    <td></td>
+                    
+                </tr>
+            </table>
                 </div>
         </br>
         <div

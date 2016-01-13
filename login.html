@@ -296,6 +296,11 @@
                                    var pwstore = document.getElementById("lpassword").value;
                                      Parse.User.logIn(emailstore, pwstore, {
                                             success: function(user) {
+                                                Parse.User.become(Parse.Session.sessionToken).then(function (user) {
+                                                    window.location = "http://desishit.com/";
+                                                }, function (error) {
+                                                     console.log(error.message);
+                                                });
                                             },
                                             error: function(user, error) {
                                                       alert(error.message);

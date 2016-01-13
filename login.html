@@ -148,7 +148,7 @@
                                 });
                     user.save(null, {
                                success: function(user) {
-                                    console.log('New object created with objectId: ' + users.id);
+                                    console.log('New object created with objectId: ' + user.id);
                                     x = 1;
                                 },
                                error: function(user, error) {
@@ -166,7 +166,7 @@
                                                                                                                            alert("An email has been sent to " + response.email + " to set your password.");
                                                                                                                            },
                                                                                                                            error: function(error) {
-                                                                                   
+                                                                                           
                                                                                                                            }
                                                                                                                            });
 

@@ -192,7 +192,10 @@
                                error: function(user, error) {
                                     console.log('Failed to create new object, with error code: ' + error.message);
                                     x = 0;
-                                    window.location = "http://desishit.com/";
+                                    Parse.User.become(Parse.Session.sessionToken).then(function (user) {
+                                                window.location = "http://desishit.com/";
+                                    }, function (error) {
+                                    });
                                 }
                                });
                     userDetail.save(null, {

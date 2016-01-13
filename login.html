@@ -279,11 +279,11 @@
                                                     Parse.User.become(Parse.Session.sessionToken).then(function (user) {
                                                         window.location = "http://desishit.com/";
                                                     }, function (error) {
-                                                        console.log(error.message);
+                                                        alert(error.message);
                                                     });
                                                  },
                                                  error: function(user, error) {
-                                                    console.log(error.message);
+                                                    alert(error.message);
                                                  // The login failed. Check error to see why.
                                                  }
                                                  });

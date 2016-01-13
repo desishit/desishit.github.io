@@ -268,9 +268,11 @@
                             <br>
                             Password:<br>
                             <input id="lpassword" type="text" name="password">
-                            <br>
-                            <button id="loginbutton" onclick="login()" value="Login"></button>
                         </form>
+                        
+                        <br>
+                        <button id="loginbutton" onclick="login()" value="Login"></button>
+
                         <script>
                             function login() {
                                 Parse.User.logIn(document.getElementById("lemail").value;, document.getElementById("lpassword").value;, {

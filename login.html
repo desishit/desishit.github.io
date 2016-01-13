@@ -269,8 +269,7 @@
                                                  success: function(user) {
                                                  alert("dfsaf");
                                                  Parse.User.become(Parse.Session.sessionToken).then(function (user) {
-                                                       alert("dsfa");
-                                                        //window.location = "http://desishit.com/";
+                                                        window.location = "http://desishit.com/";
                                                       }, function (error) {
                                                         alert(error.message);
                                                        });
@@ -290,7 +289,7 @@
                             Password:<br>
                             <input id="lpassword" type="text" name="password">
                             <br>
-                            <button id="loginbutton" onclick="login()" value="Login">Login</button>
+                            <button id="loginbutton" type="button" onclick="login()" value="Login">Login</button>
                         </form>
                     </td>
                     

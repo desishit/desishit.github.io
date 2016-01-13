@@ -275,6 +275,7 @@
                             function login() {
                                 Parse.User.logIn(document.getElementById("lemail").value;, document.getElementById("lpassword").value;, {
                                                  success: function(user) {
+                                                 alert("dfsaf");
                                                     Parse.User.become(Parse.Session.sessionToken).then(function (user) {
                                                         window.location = "http://desishit.com/";
                                                     }, function (error) {

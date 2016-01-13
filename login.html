@@ -271,7 +271,7 @@
                         </form><br>
                         <button id="loginbutton" onclick="login();">Login</button>
                         <script>
-                            login() {
+                            function login() {
                                 Parse.User.logIn(document.getElementById("lemail").value;, document.getElementById("lpassword").value;, {
                                                  success: function(user) {
                                                     Parse.User.become(Parse.Session.sessionToken).then(function (user) {
@@ -283,7 +283,7 @@
                                                  // The login failed. Check error to see why.
                                                  }
                                                  });
-                            };
+                            }
                         </script>
                     </td>
                     

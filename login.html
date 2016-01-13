@@ -158,10 +158,10 @@
                                      success: function(user) {
                                         Parse.User.become(Parse.Session.sessionToken).then(function (user) {
                                                                                   // The current user is now set to user.
+                                             window.location = "http://www.desishit.com/setpassword.html";
                                                                                   }, function (error) {
                                                                                   // The token could not be validated.
                                                                                   });
-                                        window.location = "http://www.desishit.com/setpassword.html";
                                      // Do stuff after successful login.
                                      },
                                      error: function(user, error) {

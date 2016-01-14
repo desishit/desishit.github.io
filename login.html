@@ -199,14 +199,28 @@
                                     });
                                 }
                                });
-                    userDetail.save(null, {
-                            success: function(user) {
-                              console.log('New object created with objectId: ' + user.id);
-                            },
-                            error: function(user, error) {
-                              console.log('Failed to create new object, with error code: ' + error.message);
-                            }
-                    });
+                    var Check2 = Parse.Object.extend("User_Details");
+                    var check2 = new Parse.Query(Check2);
+                    check2.equalTo("email", response.email);
+                    check.count({
+                                success: function(count) {
+                                // The count request succeeded. Show the count
+                                console.log(count)
+                                if(count == 0) {
+                                userDetail.save(null, {
+                                                success: function(user) {
+                                                console.log('New object created with objectId: ' + user.id);
+                                                },
+                                                error: function(user, error) {
+                                                console.log('Failed to create new object, with error code: ' + error.message);
+                                                }
+                                                });
+                                }
+                                },
+                                error: function(error) {
+                                // The request failed
+                                }
+                                });
                     
                     console.log('Successful login for: ' + response.name);
                     console.log(response);

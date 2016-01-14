@@ -90,7 +90,7 @@
             <center>
                 <script>
                     var currentUser = Parse.User.current();
-                    var email1
+                    var email1;
                     currentUser.fetch().then(function(fetchedUser){
                                     email1 = fetchedUser.getUsername();
                                     //document.getElementById('welcome').innerHTML ='Welcome ' + name + '!';

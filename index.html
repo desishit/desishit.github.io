@@ -96,7 +96,7 @@
                                       
                     var Check = Parse.Object.extend("User_Details");
                     var check = new Parse.Query(Check);
-                    check.equalTo("email", email1);
+                    check.equalTo("email", email);
                     check.find({
                                success: function(results) {
                                // Do something with the returned Parse.Object values

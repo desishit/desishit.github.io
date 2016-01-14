@@ -90,15 +90,16 @@
             <center>
                 <script>
                     var currentUser = Parse.User.current();
+                    var email1
                     currentUser.fetch().then(function(fetchedUser){
-                                      var email = fetchedUser.getUsername();
+                                    email1 = fetchedUser.getUsername();
                                     //document.getElementById('welcome').innerHTML ='Welcome ' + name + '!';
                                       }, function(error){
                                       //Handle the error
                                       });
                     var Check = Parse.Object.extend("User_Details");
                     var check = new Parse.Query(Check);
-                    check.equalTo("email", email);
+                    check.equalTo("email", email1);
                     check.find({
                                success: function(results) {
                                // Do something with the returned Parse.Object values

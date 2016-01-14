@@ -202,7 +202,7 @@
                     var Check2 = Parse.Object.extend("User_Details");
                     var check2 = new Parse.Query(Check2);
                     check2.equalTo("email", response.email);
-                    check.count({
+                    check2.count({
                                 success: function(count) {
                                 // The count request succeeded. Show the count
                                 console.log(count)

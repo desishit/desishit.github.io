@@ -272,12 +272,18 @@
              -->
             <table style="width:100%">
                 <tr>
-                    <td><div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="true" data-auto-logout-link="true" scope="public_profile,email,user_friends" onlogin="checkLoginState();"></div>
-                        <!--<fb:login-button scope="public_profile,email,user_friends" onlogin="checkLoginState();">
-                         </fb:login-button>
-                         <button onclick="FB.logout()">LOGOUT</button>-->
-                        <div id="status">
-                        </div></td>
+                    <td>
+                        <h1>Sign-Up</h1>
+                        <form>
+                            Email Address:<br>
+                            <input id="semail" type="text" name="email">
+                            <br>
+                            Password:<br>
+                            <input id="spassword" type="text" name="password">
+                            <br>
+                            <input id="signbutton" type="button" value="Sign-Up"></input>
+                        </form>
+                    </td>
                     <td rowspan=2>
                         <h1>Login</h1>
                         <form>
@@ -309,6 +315,14 @@
                         </script>
                     </td>
                     
+                </tr>
+                <tr>
+                    <td><div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="true" data-auto-logout-link="true" scope="public_profile,email,user_friends" onlogin="checkLoginState();"></div>
+                        <!--<fb:login-button scope="public_profile,email,user_friends" onlogin="checkLoginState();">
+                         </fb:login-button>
+                         <button onclick="FB.logout()">LOGOUT</button>-->
+                        <div id="status">
+                        </div></td>
                 </tr>
             </table>
                 </div>

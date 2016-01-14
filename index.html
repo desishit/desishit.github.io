@@ -92,11 +92,12 @@
                     var currentUser = Parse.User.current();
                     currentUser.fetch().then(function(fetchedUser){
                                       var name = fetchedUser.getUsername();
-                                             document.write("Welcome " + name + "!");
+                                             document.getElementById('welcome').innerHTML ='Welcome ' + name + '!';
                                       }, function(error){
                                       //Handle the error
                                       });
                 </script>
+                <div id="welcome"></div>
             </center>
             <div
                 class="fb-like"

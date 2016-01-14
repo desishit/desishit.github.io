@@ -89,7 +89,13 @@
             </br>
             <center>
                 <script>
-                    document.write("Welcome " + currentUser + "!");
+                    var currentUser = Parse.User.current();
+                    currentuser.fetch().then(function(fetchedUser){
+                                      var name = fetchedUser.getUsername();
+                                      }, function(error){
+                                      //Handle the error
+                                      });
+                    document.write("Welcome " + name + "!");
                 </script>
             </center>
             <div
